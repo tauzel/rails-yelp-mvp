@@ -11,3 +11,12 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  margin: 10px;
+  background-color: rgba(245,245,245,1);
+}
+
+a {
+  text-decoration: none;
+}

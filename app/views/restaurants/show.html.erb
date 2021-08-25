@@ -1,0 +1,28 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <p><strong><%= "#{@restaurant.category.capitalize} food" %></strong></p>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <table>
+    <thead>
+      <th>Review</th>
+      <th>Rating</th>
+      <th class="text-right">Posted:</th>
+    </thead>
+    <tbody>
+      <% @restaurant.reviews.order(created_at: :desc).each do |r| %>
+        <tr>
+          <td><%= r.content %></td>
+          <td><%= r.rating %></td>
+          <td>
+            <small>
+              <em class="text-right"><%= "#{time_ago_in_words(r.created_at.to_time)}" %></em>
+            </small>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Leave a review', new_restaurant_review_path(@restaurant.id), class: "btn btn-primary mt-3 text-white"%>
+  <%= link_to 'Go back', restaurants_path, class: "btn btn-primary mt-3 text-white"%>
+</div>

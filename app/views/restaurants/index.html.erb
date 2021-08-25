@@ -1,0 +1,34 @@
+<div class="container">
+
+<h1>Restaurants</h1>
+
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Address</th>
+    <th>Phone</th>
+  </thead>
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+        <tr>
+          <td>
+            <%= link_to restaurant.name, restaurant_path(restaurant.id) %>
+          </td>
+          <td>
+            <%= "#{restaurant.category.capitalize} food" %>
+          </td>
+          <td>
+            <%= restaurant.address %>
+          </td>
+          <td>
+            <%= restaurant.phone_number %>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '+ new restaurant', new_restaurant_path, class: "btn btn-primary text-white" %>
+
+</div>
